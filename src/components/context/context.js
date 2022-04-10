@@ -12,5 +12,5 @@ export const context = createContext({
     validator: null,
     handleLogin: () => {},
     handleRegister: () => {},
-    openNewCourseDialog: () => {}
+    openNewProductDialog: () => {}
 });

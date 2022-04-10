@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
 import { dashContext } from "../context/dashContext";
-import Pagination from "./../common/Pagination";
+import Pagination from "../common/Pagination";
 
-const CourseTable = () => {
+const ProductTable = () => {
   const context = useContext(dashContext);
 
   const {
     currentPage,
     perPage,
     handlePageChange,
-    courseData,
-    openNewCourseDialog,
+    productData,
+    openNewProductDialog,
     openNewEditDialog,
-    openDeletCourseDialog,
+    openDeletProductDialog,
     setSearch,
-    filteredCourse,
+    filteredProduct,
   } = context;
 
   return (
@@ -23,7 +23,7 @@ const CourseTable = () => {
         <div>
           <h3 className="alert alert-info text-center ">لیست  محصولات</h3>
           <div className="row inline-block" style={{ marginBottom: "50px" }}>
-            <button className="btn btn-primary" onClick={openNewCourseDialog}>
+            <button className="btn btn-primary" onClick={openNewProductDialog}>
               <span
                 className="fa fa-plus"
                 style={{
@@ -56,22 +56,22 @@ const CourseTable = () => {
               </tr>
             </thead>
             <tbody>
-              {courseData.map((course) => (
-                <tr key={course._id}>
-                  <td>{course.title}</td>
+              {productData.map((product) => (
+                <tr key={product._id}>
+                  <td>{product.title}</td>
                   <td>
                     <a
-                      href={`http://localhost:4000/${course.imageUrl}`}
+                      href={`http://localhost:4000/${product.imageUrl}`}
                     >
                       {" "}
                       نمایش تصویر
                     </a>
                   </td>
-                  <td>{course.price === 0 ? "رایگان" : `${course.price}`}</td>
+                  <td>{product.price === 0 ? "رایگان" : `${product.price}`}</td>
                   <td>
                     <button
                       className="btn btn-warning"
-                      onClick={() => openNewEditDialog(course)}
+                      onClick={() => openNewEditDialog(product)}
                     >
                       ویرایش
                     </button>
@@ -79,7 +79,7 @@ const CourseTable = () => {
                   <td>
                     <button
                       className="btn btn-danger"
-                      onClick={() => openDeletCourseDialog(course)}
+                      onClick={() => openDeletProductDialog(product)}
                     >
                       حذف
                     </button>
@@ -91,7 +91,7 @@ const CourseTable = () => {
         </div>
         <div className="navbar-bottom-fixed text-center footer">
           <Pagination
-            totalCourse={filteredCourse.length}
+            totalProduct={filteredProduct.length}
             currentPage={currentPage}
             perPage={perPage}
             onPageChange={handlePageChange}
@@ -102,4 +102,4 @@ const CourseTable = () => {
   );
 };
 
-export default CourseTable;
+export default ProductTable;

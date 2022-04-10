@@ -1,50 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { dashContext } from "./dashContext";
-import NewCourseDialog from "./../admin/dialogs/NewCourseDialog";
+import NewProductDialog from "./../admin/dialogs/NewProductDialog";
 import { paginate } from "./../../utils/paginate";
 import NewEditDialog from "./../admin/dialogs/NewEditDialog";
-import DeletCourseDialog from "./../admin/dialogs/DeletCourseDialog";
+import DeletProductDialog from "./../admin/dialogs/DeletProductDialog";
 
-const AdminContext = ({ children, courses }) => {
+const AdminContext = ({ children, products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(5);
-  const [newCourseDialog, setNewCourseDialog] = useState(false);
+  const [newProductDialog, setNewProductDialog] = useState(false);
   const [newEditDialog, setNewEditDialog] = useState(false);
-  const [curruntCourse, setCurrentCourse] = useState({});
-  const [newDeletCourseDialog, setnewDeletCourseDialog] = useState(false);
-  const [curruntDeletCourse, setCurrentDeletCourse] = useState({});
+  const [curruntProduct, setCurrentProduct] = useState({});
+  const [newDeletProductDialog, setnewDeletProductDialog] = useState(false);
+  const [curruntDeletProduct, setCurrentDeletProduct] = useState({});
   const [search, setSearch] = useState("");
-  const [listCourse, setListCourse] = useState([]);
+  const [listProduct, setListProduct] = useState([]);
 
-  useEffect(() => setListCourse(courses), [courses]);
+  useEffect(() => setListProduct(products), [products]);
 
-  const filteredCourse = listCourse.filter((course) =>
-    course.title.includes(search)
+  const filteredProduct = listProduct.filter((product) =>
+    product.title.includes(search)
   );
 
-  const openNewCourseDialog = () => setNewCourseDialog(true);
+  const openNewProductDialog = () => setNewProductDialog(true);
 
-  const closeNewCourseDialog = () => setNewCourseDialog(false);
+  const closeNewProductDialog = () => setNewProductDialog(false);
 
-  const openNewEditDialog = (course) => {
+  const openNewEditDialog = (product) => {
     setNewEditDialog(true);
-    setCurrentCourse(course);
+    setCurrentProduct(product);
   };
 
   const closeNewEditDialog = () => setNewEditDialog(false);
 
-  const openDeletCourseDialog = (course) => {
-    setnewDeletCourseDialog(true);
-    setCurrentDeletCourse(course);
+  const openDeletProductDialog = (product) => {
+    setnewDeletProductDialog(true);
+    setCurrentDeletProduct(product);
   };
 
-  const closeDeletCourseDialog = () => setnewDeletCourseDialog(false);
+  const closeDeletProductDialog = () => setnewDeletProductDialog(false);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const courseData = paginate(filteredCourse, currentPage, perPage);
+  const productData = paginate(filteredProduct, currentPage, perPage);
 
   return (
     <dashContext.Provider
@@ -53,27 +53,27 @@ const AdminContext = ({ children, courses }) => {
         setCurrentPage,
         perPage,
         handlePageChange,
-        courseData,
-        openNewCourseDialog,
+        productData,
+        openNewProductDialog,
         openNewEditDialog,
-        openDeletCourseDialog,
-        filteredCourse,
+        openDeletProductDialog,
+        filteredProduct,
         setSearch,
       }}
     >
-      <NewCourseDialog
-        showDialog={newCourseDialog}
-        closeDialog={closeNewCourseDialog}
+      <NewProductDialog
+        showDialog={newProductDialog}
+        closeDialog={closeNewProductDialog}
       />
       <NewEditDialog
         showEditDialog={newEditDialog}
         closeEditDialog={closeNewEditDialog}
-        course={curruntCourse}
+        product={curruntProduct}
       />
-      <DeletCourseDialog
-        showDeletDialog={newDeletCourseDialog}
-        closeDeletDialog={closeDeletCourseDialog}
-        course={curruntDeletCourse}
+      <DeletProductDialog
+        showDeletDialog={newDeletProductDialog}
+        closeDeletDialog={closeDeletProductDialog}
+        product={curruntDeletProduct}
       />
 
       {children}

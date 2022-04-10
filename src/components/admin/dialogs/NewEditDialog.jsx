@@ -2,34 +2,34 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
 import { useDispatch } from "react-redux";
-import { creatNewEdit } from "../../../actions/courses";
+import { creatNewEdit } from "../../../actions/products";
 import "@reach/dialog/styles.css";
 
-const NewEditDialog = ({ showEditDialog, closeEditDialog, course }) => {
+const NewEditDialog = ({ showEditDialog, closeEditDialog, product }) => {
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
   const [info, setInfo] = useState();
-  const [courseId, setCourseId] = useState();
+  const [productId, setProductId] = useState();
   const [imageUrl, setImageUrl] = useState();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTitle(course.title);
-    setPrice(course.price);
-    setInfo(course.info);
-    setImageUrl(course.imageUrl);
-    setCourseId(course._id);
+    setTitle(product.title);
+    setPrice(product.price);
+    setInfo(product.info);
+    setImageUrl(product.imageUrl);
+    setProductId(product._id);
 
     return () => {
       setTitle();
       setPrice();
       setInfo();
       setImageUrl();
-      setCourseId();
+      setProductId();
    
     };
-  }, [course]);
+  }, [product]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,7 +47,7 @@ const NewEditDialog = ({ showEditDialog, closeEditDialog, course }) => {
 
       data.append("info", info);
       
-      dispatch(creatNewEdit(courseId, data));
+      dispatch(creatNewEdit(productId, data));
       closeEditDialog();
     } catch {
       console.log(event);

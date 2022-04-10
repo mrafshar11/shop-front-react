@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dashboard = ({ courses }) => {
+const Dashboard = ({ products }) => {
     return (
         <div className="container-fluid" style={{ marginTop: "5em" }}>
             <div className="row">
@@ -12,7 +12,7 @@ const Dashboard = ({ courses }) => {
                                     <i className="fa fa-graduation-cap fa-5x"></i>
                                 </div>
                                 <div className="col-xs-9 text-left">
-                                    <div className="huge">{courses.length}</div>
+                                    <div className="huge">{products.length}</div>
                                     <div>تعداد  محصولات</div>
                                 </div>
                             </div>

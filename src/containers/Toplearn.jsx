@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import Course from "../components/Course/Course";
+import Product from "../components/product/Product";
 import MainLayout from "../components/Layouts/MainLayout";
 import UserContext from "../components/context/userContext";
 import Login from "../components/Login/Login";
 import Register from "./../components/Register/Register";
-import Archive from "./../components/Course/Archive";
-import SingleCourse from "./../components/Course/SingleCourse";
+
+import Singleproduct from "./../components/product/SingleProduct";
 import UserProfile from "./../components/Profile/UserProfile";
 import { useSelector, useDispatch } from "react-redux";
 import { paginate } from "./../utils/paginate";
@@ -18,15 +18,16 @@ import { isEmpty } from "lodash";
 import NotFound from "./../components/common/notfound";
 import PrivateLayout from "./../components/Layouts/PrivateLayout";
 import Dashboard from "../components/admin/Dashboard";
-import CourseTable from "./../components/admin/CourseTable";
+import ProductTable from "./../components/admin/ProductTable";
 import AdminContext from "../components/context/AdminContext";
+import Archive from './../components/product/Archive';
 
 const Toplearn = () => {
-  const courses = useSelector((state) => state.courses);
+  const products = useSelector((state) => state.products);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const indexCourses = paginate(courses, 1, 8);
+  const indexproducts = paginate(products, 1, 8);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -46,11 +47,11 @@ const Toplearn = () => {
       <Route path={["/dashboard"]}>
         <PrivateLayout>
           <Route
-            path="/dashboard/courses"
+            path="/dashboard/products"
             render={() =>
               !isEmpty(user) && user.isAdmin ? (
-                <AdminContext courses={courses}>
-                  <CourseTable />
+                <AdminContext products={products}>
+                  <ProductTable />
                 </AdminContext>
               ) : (
                 <Redirect to="/" />
@@ -62,7 +63,7 @@ const Toplearn = () => {
             exact
             render={() =>
               !isEmpty(user) && user.isAdmin ? (
-                <Dashboard courses={courses} />
+                <Dashboard products={products} />
               ) : (
                 <Redirect to="/" />
               )
@@ -102,15 +103,15 @@ const Toplearn = () => {
                 )
               }
             />
-            <Route path="/archive" component={Archive} />
-            <Route path="/course/:id" component={SingleCourse} />
+            <Route path="/Archivee" component={Archive} />
+            <Route path="/product/:id" component={Singleproduct} />
             <Route path="/user-profile" component={UserProfile} />
             <Route
               path="/"
               exact
               render={() =>
-                indexCourses.length > 0 ? (
-                  <Course courses={indexCourses} />
+                indexproducts.length > 0 ? (
+                  <Product products={indexproducts} />
                 ) : (
                   <h2>هیچ دوره ای جهت نمایش نیست</h2>
                 )

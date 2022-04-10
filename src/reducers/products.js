@@ -1,4 +1,4 @@
-// export const coursesReducer = (state = [], action) => {
+// export const productsReducer = (state = [], action) => {
 //     switch (action.type) {
 //         case "INIT":
 //             return [...action.payload];
@@ -9,7 +9,7 @@
 // };
 
 
-export const coursesReducer = (state = [], action) => {
+export const productsReducer = (state = [], action) => {
     switch (action.type) {
         case "INIT":
             return [...action.payload];

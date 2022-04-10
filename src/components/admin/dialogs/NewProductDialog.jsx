@@ -2,11 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
 import { useDispatch } from "react-redux";
-import { creatNewCourse } from "../../../actions/courses";
+import { creatNewProduct } from "../../../actions/products";
 import "@reach/dialog/styles.css";
 
 
-const NewCourseDialog = ({ showDialog, closeDialog }) => {
+const NewProductDialog = ({ showDialog, closeDialog }) => {
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
   const [info, setInfo] = useState();
@@ -26,7 +26,7 @@ const NewCourseDialog = ({ showDialog, closeDialog }) => {
       
       console.log(data)
 
-      dispatch(creatNewCourse(data));
+      dispatch(creatNewProduct(data));
       closeDialog();
     } catch {
       console.log(event);
@@ -101,4 +101,4 @@ const NewCourseDialog = ({ showDialog, closeDialog }) => {
   );
 };
 
-export default NewCourseDialog;
+export default NewProductDialog;

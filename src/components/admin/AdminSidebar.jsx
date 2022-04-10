@@ -17,12 +17,12 @@ const AdminSidebar = ({ location }) => {
 
                 <li
                     className={
-                        location.pathname === "/dashboard/courses"
+                        location.pathname === "/dashboard/products"
                             ? "active"
                             : ""
                     }
                 >
-                    <Link to="/dashboard/courses">
+                    <Link to="/dashboard/products">
                         <i className="fa fa-fw fa-graduation-cap"></i> محصولات
                     </Link>
                 </li>

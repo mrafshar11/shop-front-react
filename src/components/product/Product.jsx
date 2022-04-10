@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ShowImage from "../common/ShowImage";
 
-const Course = ({ courses }) => {
+const Product = ({ products }) => {
     return (
         <section className="terms-items">
             <header>
@@ -10,27 +10,27 @@ const Course = ({ courses }) => {
                 <Link to="/archive"> مشاهده همه محصولات </Link>
             </header>
             <div className="row">
-                {courses.map(course => (
+                {products.map(product => (
                     <div
-                        key={course._id}
+                        key={product._id}
                         className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col"
                     >
                         <article>
                             <Link
-                                to={`/course/${course._id}`}
+                                to={`/product/${product._id}`}
                                 className="img-layer"
                             >
                                 {/* <img
-                                    src={`http://localhost:4000/${course.imageUrl}`}
+                                    src={`http://localhost:4000/${product.imageUrl}`}
                                 /> */}
-                                <ShowImage image={course.imageUrl} />
+                                <ShowImage image={product.imageUrl} />
                             </Link>
                             <h2>
-                                <Link to={`/course/${course._id}`}>
-                                    {course.title}
+                                <Link to={`/product/${product._id}`}>
+                                    {product.title}
                                 </Link>
                             </h2>
-                            <span> {course.price === 0 ? "رایگان" : `${course.price}`} </span>
+                            <span> {product.price === 0 ? "رایگان" : `${product.price}`} </span>
                             <i>1:52:32</i>
                         </article>
                     </div>
@@ -40,4 +40,4 @@ const Course = ({ courses }) => {
     );
 };
 
-export default Course;
+export default Product;

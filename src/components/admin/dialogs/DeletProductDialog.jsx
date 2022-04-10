@@ -1,10 +1,10 @@
 import React from "react";
 import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
 import { useDispatch } from "react-redux";
-import { DeletCourse } from "../../../actions/courses";
+import { DeletProduct } from "../../../actions/products";
 import "@reach/dialog/styles.css";
 
-const DeletCourseDialog = ({ showDeletDialog, closeDeletDialog, course }) => {
+const DeletProductDialog = ({ showDeletDialog, closeDeletDialog, product }) => {
   const dispatch = useDispatch();
 
   return (
@@ -21,12 +21,12 @@ const DeletCourseDialog = ({ showDeletDialog, closeDeletDialog, course }) => {
         }}
       >
         <div className="card text-center">
-          <h3 style={{ fontSize: "2rem" }}>پاک کردن {course.title}</h3>
+          <h3 style={{ fontSize: "2rem" }}>پاک کردن {product.title}</h3>
           <hr />
-          <p>مطمئنی میخوای {course.title}  رو پاک کنی؟</p>
+          <p>مطمئنی میخوای {product.title}  رو پاک کنی؟</p>
         </div>
         <button
-          onClick={() => dispatch(DeletCourse(course._id)) && closeDeletDialog()}
+          onClick={() => dispatch(DeletProduct(product._id)) && closeDeletDialog()}
           className="btn btn-success "
           style={{ margin: "1em" }}
         >
@@ -44,4 +44,4 @@ const DeletCourseDialog = ({ showDeletDialog, closeDeletDialog, course }) => {
   );
 };
 
-export default DeletCourseDialog;
+export default DeletProductDialog;

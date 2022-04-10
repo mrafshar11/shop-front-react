@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import { coursesReducer } from "./courses";
-import { courseReducer } from "./course";
+import { productsReducer } from "./products";
+import { productReducer } from "./product";
 import { userReducer } from "./user";
 import { loadingBarReducer } from "react-redux-loading-bar";
 
 export const reducers = combineReducers({
-    courses: coursesReducer,
-    course: courseReducer,
+    products: productsReducer,
+    product: productReducer,
     user: userReducer,
     loadingBar: loadingBarReducer
 });

@@ -1,8 +1,8 @@
 import React from "react";
 import { range } from "lodash";
 
-const Pagination = ({ totalCourse, currentPage, perPage, onPageChange }) => {
-    const pageCount = Math.ceil(totalCourse / perPage);
+const Pagination = ({ totalProduct, currentPage, perPage, onPageChange }) => {
+    const pageCount = Math.ceil(totalProduct / perPage);
     if (pageCount === 1) return null;
 
     const pages = range(1, pageCount + 1);

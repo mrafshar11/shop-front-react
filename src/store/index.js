@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import { reducers } from "./../reducers/index";
 import thunk from "redux-thunk";
-import { getAllCourses } from "./../actions/courses";
+import { getAllProducts } from "./../actions/products";
 import { loadingBarMiddleware } from "react-redux-loading-bar";
 
 export const store = createStore(
@@ -14,7 +14,7 @@ export const store = createStore(
 );
 
 //Initialize
-store.dispatch(getAllCourses());
+store.dispatch(getAllProducts());
 
 //subscribe
 store.subscribe(() => console.log(store.getState()));

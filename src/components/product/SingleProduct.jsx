@@ -1,21 +1,21 @@
 import React, { Fragment, useEffect } from "react";
 import Pagination from "../common/Pagination";
 import { useSelector, useDispatch } from "react-redux";
-import { getSingleCourse } from "./../../actions/course";
-import ShowImage from "./../common/ShowImage";
-import { courseIdValditor } from "./../../utils/idvalidator";
+import { getSingleProduct } from "../../actions/product";
+import ShowImage from "../common/ShowImage";
+import { productIdValditor } from "../../utils/idvalidator";
 import { Redirect } from "react-router";
 
-const SingleCourse = ({ match }) => {
-  const course = useSelector((state) => state.course);
+const SingleProduct = ({ match }) => {
+  const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (courseIdValditor(match.params.id))
-      dispatch(getSingleCourse(match.params.id));
+    if (productIdValditor(match.params.id))
+      dispatch(getSingleProduct(match.params.id));
   }, []);
 
-  if (!courseIdValditor(match.params.id)) {
+  if (!productIdValditor(match.params.id)) {
     return <Redirect to="/404" />;
   }
 
@@ -23,14 +23,14 @@ const SingleCourse = ({ match }) => {
     <Fragment>
       <section className="term-content">
         <header>
-          <h1>{course.title}</h1>
+          <h1>{product.title}</h1>
         </header>
         <div className="row">
           <div className="col-md-8 col-sm-12 col-xs-12 pull-left">
             <section className="term-description">
-              <ShowImage image={course.imageUrl} />
+              <ShowImage image={product.imageUrl} />
 
-              <p>{course.info}</p>
+              <p>{product.info}</p>
 
               <h2> توضیحات محصول </h2>
               <ul>
@@ -249,4 +249,4 @@ const SingleCourse = ({ match }) => {
   );
 };
 
-export default SingleCourse;
+export default SingleProduct;

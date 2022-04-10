@@ -1,4 +1,4 @@
-export const courseIdValditor = courseId => {
+export const productIdValditor = productId => {
     const hexRegExp = new RegExp("^[0-9a-fA-F]{24}$")
-    return hexRegExp.test(courseId);
+    return hexRegExp.test(productId);
 }
